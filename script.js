@@ -1,4 +1,3 @@
-//your JS code here. If required.
 function getRandomTime() {
   return Math.random() * 2 + 1;
 }
@@ -18,9 +17,12 @@ const promises = [
   })
 ];
 
+const output = document.getElementById("output");
+
+output.innerHTML = '<tr id="loading"><td colspan="2">Loading...</td></tr>'; // Ensure loading row is present
+
 Promise.all(promises).then((results) => {
-  const output = document.getElementById("output");
-  output.innerHTML = "";
+  output.innerHTML = ""; // Remove loading row
 
   results.forEach(({ name, time }) => {
     const row = `<tr><td>${name}</td><td>${time}</td></tr>`;
